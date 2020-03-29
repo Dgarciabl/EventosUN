@@ -2,34 +2,23 @@
  
 // Create connection
 require('../configuraciones/conexionbd.php');
-
-$codigo = $_POST["codigo"];
-$email = $_POST["email"];
-
-//query
-if($codigo<0){
-	echo "codigo debe ser positivo";
-}
-
-else{
-	if($email===""){
-	$query="INSERT INTO `sede`(`codigo`,`direccion`,`municipio`,`nombre`, `telefono`,`email`)
- 	VALUES ('$_POST[codigo]','$_POST[direccion]','$_POST[municipio]','$_POST[name]','$_POST[telefono]',NULL)";
+$query="INSERT INTO `empresa`(`nit`,`nombre`,`direccion`,`telefono`, `tipo`)
+ 		VALUES ('$_POST[nit]','$_POST[nombre]','$_POST[direccion]','$_POST[telefono]',"externa")";
+$result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+if($result){
+	$query="INSERT INTO `externa`(`nit`,`representante`)
+ 			VALUES ('$_POST[nit]','$_POST[representante]')";
 	$result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+	if($result){
+	    header ("Location: sede.php");
 	}else{
-	$query="INSERT INTO `sede`(`codigo`,`direccion`,`municipio`,`nombre`, `telefono`,`email`)
- 	VALUES ('$_POST[codigo]','$_POST[direccion]','$_POST[municipio]','$_POST[name]','$_POST[telefono]','$_POST[email]')";
-	$result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+	 	echo "Ha ocurrido un error al crear la sede";
 	}
- 		if($result){
-        	header ("Location: sede.php");
-        
-         
- 		}else{
- 		echo "Ha ocurrido un error al crear la sede";
- 		}
-
-
+}else{
+ 	echo "Ha ocurrido un error al crear la sede";
 }
+
+
+
 
 ?>
