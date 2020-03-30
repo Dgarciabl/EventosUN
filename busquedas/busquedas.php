@@ -27,13 +27,13 @@
         <li class="nav-item">
             <a class="nav-link active" href="index.html">Inicio</a>
         </li>
-        <li class="nav nav-pills">
+        <li class="nav-item">
             <a class="nav-link active" href="./empresas/empresas.php">Empresas</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" href="./eventos/eventos.php">Eventos</a>
         </li>
-        <li class="nav-item">
+        <li class="nav nav-pills">
             <a class="nav-link" href="./busquedas/busquedas.php">Búsquedas</a>
         </li>
         <li class="nav-item">
