@@ -32,14 +32,14 @@
             <tbody>
             <?php
                     $host = "localhost";
-                    $user = "trabajobd";
-                    $pass = "trabajobd";
+                    $user = "root";
+                    $pass = "root";
                     $DB = "trabajobd";
                     $conn = mysqli_connect($host, $user, $pass, $DB) or die("Error al conectar a la DB " . mysqli_error($link));
                     
-                    $query="SELECT * FROM empresas natural join externas ,count(* From eventos where nit_e=nit) as numevent
+                    $query="SELECT * FROM empresas natural join externas ,count(* From eventos where empresas.nit=externa.nit) as numevent
                             group by nit
-                            WHERE  numevent>=3";
+                            WHERE  numevent>=2 AND numevent<=4";
                    
                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
                     if($result){

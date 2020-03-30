@@ -22,27 +22,31 @@
         <table class="table border-rounded">
             <thead class="thead ">
                 <tr>
-                    <th scope="col">Código</th>
-                    <th scope="col">Fecha Inicio</th>
-                    <th scope="col">Fecha Final</th>
-		    <th scope="col">Valor a cubrir</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">telefono</th>
+                    <th scope="col">tipo</th>
                 </tr>
             </thead>
             <tbody>
             <?php
-                    require('../configuraciones/conexionbd.php');
-                        $query="SELECT g.codigo,g.fecha_inicio,g.fecha_final,g.cubre_valor FROM garantia AS g join sede AS s 
-			on s.codigo=g.cod_sede
-			WHERE s.nombre LIKE '$_POST[identificacion]%'";                   
+                    $host = "localhost";
+                    $user = "root";
+                    $pass = "root";
+                    $DB = "trabajobd";
+                    $conn = mysqli_connect($host, $user, $pass, $DB) or die("Error al conectar a la DB " . mysqli_error($link));
+
+                        $query="SELECT direccion,telefono,tipo FROM empresa AS emp join evento AS eve 
+			on emp.nit=eve.nit
+			WHERE eve.cod_evento LIKE '$_POST[cod_busqueda]%'";                   
                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
                     if($result){
                         foreach($result as $fila){
                         ?>
                             <tr>
-                                <td><?=$fila['codigo'];?></td>
-                                <td><?=$fila['fecha_inicio'];?></td>
-                                <td><?=$fila['fecha_final'];?></td>
-                                <td><?=$fila['cubre_valor'];?></td>
+
+                                <td><?=$fila['direccion'];?></td>
+                                <td><?=$fila['telefono'];?></td>
+                                <td><?=$fila['tipo'];?></td>
                             </tr>
                         <?php
                         }

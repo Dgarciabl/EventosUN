@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--titulo de la pagina-->
-    <title>inicio</title>
+    <title>Inicio</title>
     <!--CDN de boostraps: Libreria de estilos SCSS y CSS para darle unas buena apariencia a la aplicacion
         para mas informacion buscar documentacion de boostraps en: https://getbootstrap.com/docs/4.3/getting-started/introduction/ -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -22,26 +22,24 @@
         <table class="table border-rounded">
             <thead class="thead ">
                 <tr>
-                    <th scope="col">Código</th>
+                    <th scope="col">Nit</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Representante</th>
                 </tr>
             </thead>
             <tbody>
             <?php
-                    require('../configuraciones/conexionbd.php');
-                    $query="SELECT sede.codigo AS nit,sede.nombre AS name
-			   FROM sede JOIN (SELECT s.codigo AS scod,COUNT(*) AS contador
-			   FROM garantia AS g,sede AS s
-			   WHERE s.codigo=g.cod_sede
-			   GROUP BY s.codigo) AS cuentas
-ON sede.codigo=scod
-WHERE contador= (SELECT MAX(max_garantia) AS 
-		    	   maxgarsede
-			   FROM
-			   (SELECT COUNT(*)AS max_garantia
-			   FROM garantia AS g,sede AS s
-			   WHERE s.codigo=g.cod_sede
-			   GROUP BY s.codigo)AS contador)";
+                    $host = "localhost";
+                    $user = "root";
+                    $pass = "root";
+                    $DB = "trabajobd";
+                    $conn = mysqli_connect($host, $user, $pass, $DB) or die("Error al conectar a la DB " . mysqli_error($link));
+                    
+                    $query="SELECT * FROM empresas natural join contratada ,count(* From eventos where empresa.nit=contratada.nit) as numevent
+                            group by nit
+                            WHERE  numevent>=3";
                    
                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
                     if($result){
@@ -49,7 +47,10 @@ WHERE contador= (SELECT MAX(max_garantia) AS
                         ?>
                             <tr>
                                 <td><?=$fila['nit'];?></td>
-                                <td><?=$fila['name'];?></td>
+                                <td><?=$fila['nombre'];?></td>
+                                <td><?=$fila['direccion'];?></td>
+                                <td><?=$fila['telefono'];?></td>
+                                <td><?=$fila['especialidad'];?></td>
                             </tr>
                         <?php
                         }

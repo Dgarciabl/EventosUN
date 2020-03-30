@@ -45,11 +45,11 @@
                         Registrar Evento
                     </div>
                     <div class="card-body">
-                        <!--formulario para insertar una sede mediante el metodo post-->
+                        <!--formulario para insertar una sede mediante el metodo post--> 
                         <form action="insert_evento.php" class="form-group" method="post">
                             <div class="form-group">
-                                <label for="nit">Nit</label>
-                                <input type="text" name="nit" id="nit" class="form-control" required>
+                                <label for="cod_evento">Codigo</label>
+                                <input type="number" name="cod_evento" id="cod_evento" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="fecha">Fecha</label>
@@ -63,7 +63,10 @@
                                 <label for= "nombre">Nombre </label>
                                 <input type="text" name="nombre" id="nombre" class="form-control" required>
                             </div>
-                            <div>
+                            <div class="form-group">
+                                <label for="ubicacion">Ubicación</label>
+                                <input type="text" name="ubicacion" id="ubicacion" class="form-control" required>
+                            </div>
                                 <label for="razon">razon</label>
                                 <select id="razon" name="razon">
                                     <option value="union">Union</option>
@@ -72,7 +75,21 @@
                                     <option value="conferencia">Conferencia</option>
                                 </select>
                             </div>
+                        <label for="nit">NIT</label>    
+                        <select name="nit" id="nit" class="from-control">
+						<option value="">Elija</option>
+                    				<?php 
+                        			require('list_e_NIT.php');
+                            			if($result){
+                            			foreach ($result as $fila){
+                                		?>
+                                    		<option value="<?=$fila['nit'];?>"><?=$fila['nit'];?></option> 
+                                		<?php                    
 
+                                		}
+                            			}       
+                    				?>                        
+                				</select>
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary" value="REGISTRAR">
                             </div>                           
@@ -84,12 +101,14 @@
                 <table class="table border-rounded">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">Nit</th>
                             <th scope="col">Codigo</th>
                             <th scope="col">Razon</th>
                             <th scope="col">Fecha</th>
                             <th scope="col">Presupuesto</th>
                             <th scope="col">Nombre</th>
+                            <th scope="col">Ubicacion</th>
+                            <th scope="col">NIT</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -98,9 +117,7 @@
                         if($result){
                             foreach ($result as $fila){
                         ?>
-                        <tr>
-                            <td><?=$fila['nit'];?></td>  
-
+                        <tr> 
                             <td><?=$fila['cod_evento'];?></td>
 
                             <td><?=$fila['razon'];?></td>
@@ -110,11 +127,17 @@
                             <td><?=$fila['presupuesto'];?></td>
 
                             <td><?=$fila['nombre'];?></td>
+                            
+                            <td><?=$fila['ubicacion'];?></td>
+
+                            <td><?=$fila['nit'];?></td>
+
+                             
 
                             <td>
                                 <form action="delete_evento.php" method="POST">
-                                    <input type="text" value=<?=$fila['nit'];?> hidden>
-                                    <input type="text" name="d" value=<?=$fila['nit'];?> hidden>
+                                    <input type="text" value=<?=$fila['cod_evento'];?> hidden>
+                                    <input type="text" name="d" value=<?=$fila['cod_evento'];?> hidden>
                                     <button class="btn btn-danger" title="eliminar" type="submit"><i
                                             class="fas fa-trash-alt"></i></button>
                                 </form>

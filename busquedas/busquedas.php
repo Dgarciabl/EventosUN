@@ -45,13 +45,13 @@
             <div class="col-6 px-2">
 		<div class="card">
                     <div class="card-header">
-                        Búsqueda 1: Datos de todas las garantías con el mismo primer nombre de sede.
+                        Búsqueda 1: Datos de la empresas segun codigo de evento solicitado.
                     </div>
                     <div class="card-body">
 			<form action="buscar_1.php" target="_blank"  method="POST">
-		    	<p>Primer nombre de la sede</p>
+		    	<p>Codigo del evento</p>
                     	<div class="input-group ">
-                        <input type="text" name="identificacion" id="identificacion" class="form-control">
+                        <input type="number" name="cod_busqueda" id="cod_busqueda" class="form-control">
                         <button class="btn  btn-primary"  title="Buscar" type="submit">
                             <i class="fas fa-search-plus mx-0 my-0"> </i></button>
 				</div>
@@ -61,14 +61,18 @@
 	    </div>
 			<div class="card">
                     <div class="card-header">
-                        Búsqueda 2: Todas las garantías de una marca proveedora cuya fecha de inicio sea mayor o igual a la ingresada.
+                        Búsqueda 2: Eventos hechos por un empresa dentro de un rango de fechas.
                     </div>
                     <div class="card-body">
 				<form action="buscar_2.php" target="_blank"  method="POST">
-				<p>RUT y Fecha inicio</p>
+				<p>NIT,Fecha inicio y Fecha final</p>
                     		<div class="input-group ">
-                        		<input type="text" name="identificacion" id="identificacion" class="form-control">
-					<input type="date" name="fecha" id="fecha" class="form-control">
+                            <label for="nit">NIT empresa</label>
+                        	<input type="text" name="nit" id="nit" class="form-control">
+                    <label for="fecha_inicial">fecha inicial</label>        
+					<input type="date" name="fecha_inicial" id="fecha_inicial" class="form-control">
+                    <label for="fecha_final">fecha final</label>   
+                    <input type="date" name="fecha_final" id="fecha_final" class="form-control">
                         		<button class="btn  btn-primary"  title="Buscar" type="submit">
                             			<i class="fas fa-search-plus mx-0 my-0"> </i></button>
                     		</div>
