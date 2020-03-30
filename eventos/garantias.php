@@ -22,25 +22,21 @@
     	
     <!--Barra de navegacion-->
     <ul class="nav">
-        <li class="nav nav-item">
-            <a class="nav-link " href="../index.html">Inicio</a>
+        <li class="nav-item">
+            <a class="nav-link active" href="index.html">Inicio</a>
         </li>
-        <li class="nav ">
-            <a class="nav-link " href="../sede/sede.php">Sedes</a>
+        <li class="nav nav-pills">
+            <a class="nav-link active" href="./empresas/empresas.php">Empresas</a>
         </li>
-        <li class="nav ">
-            <a class="nav-link " href="../marca_proveedora/marca_proveedora.php">Marcas Proveedoras</a>
+        <li class="nav-item">
+            <a class="nav-link active" href="./eventos/eventos.php">Eventos</a>
         </li>
-        <li class="nav-item nav-pills">
-            <a class="nav-link active" href="garantias.php">Garantías</a>
+        <li class="nav-item">
+            <a class="nav-link" href="./busquedas/busquedas.php">Búsquedas</a>
         </li>
-        <li class="nav ">
-            <a class="nav-link " href="../busquedas/busquedas.php">Búsquedas</a>
+        <li class="nav-item">
+            <a class="nav-link" href="./consultas/consultas.php">Consultas</a>
         </li>
-        <li class="nav ">
-            <a class="nav-link " href="../consultas/consultas.php">Consultas</a>
-        </li>
-
     </ul>
 
     <div class="container mt-3">
@@ -54,21 +50,24 @@
                         <!--formulario para insertar una persona mediante el metodo post-->
                         <form action="insert_g.php" class="form-group" method="post">
                             <div class="form-group">
-                                <label for="codigo">Código</label>
+                                <label for="codigo">codigo</label>
                                 <input type="text" name="codigo" id="codigo" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="">Fecha Inicio</label>
-                                <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control" required>
+                                <label for="">razon</label>
+                                <input type="text" name="razon" id="razon" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="">Fecha Final</label>
-                                <input type="date" name="fecha_final" id="fecha_final" class="form-control" required>
+                                <label for="">Fecha</label>
+                                <input type="date" name="fecha" id="fecha" class="form-control" required>
                             </div>
-			    <div class="form-group">
-                                <label for="">Valor a cubrir</label>
-                                <input type="text" name="cubre_valor" id="cubre_valor" class="form-control" required>
+			                <div class="form-group">
+                                <label for="">presupuesto</label>
+                                <input type="text" name="presuspuesto" id="presupuesto" class="form-control" required>
                             </div>
+                            <div class="form-group">
+                                <label for "">nombre</label>
+                                <input type="text" name="nombre de evento" id="nombre" class="form-control" required>
 			 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                             <div class="form-group">
                                 <label for="">Cumplidor</label>
