@@ -63,14 +63,19 @@ CREATE TABLE evento(
     Nombre               VARCHAR(100) NOT NULL,
     NIT                  INT(10) REFERENCES empresa(NIT),
     Cedula               INT(10) REFERENCES persona(Cedula),
-    decoracion           INT(10) NOT NULL REFERENCES decoracion(nrocontrato_deco),
-    catering             INT(10) NOT NULL REFERENCES catering(nrocontrato_cat)
+    decoracion           INT(10) REFERENCES decoracion(nrocontrato_deco),
+    catering             INT(10) REFERENCES catering(nrocontrato_cat),
+    direccion            VARCHAR(100) REFERENCES ubicacion(direccion_completa)
 )ENGINE=INNODB;
 ALTER TABLE evento ADD CONSTRAINT CK_nulidad CHECK((NIT IS NULL AND Cedula IS NOT NULL) OR (NIT IS NOT NULL AND Cedula IS NULL));
 ALTER TABLE evento ADD CONSTRAINT CKRC CHECK(razon="conferencia");
 ALTER TABLE evento ADD CONSTRAINT CKRA CHECK(razon="aniversario");
 ALTER TABLE evento ADD CONSTRAINT CKRR CHECK(razon="reunion");
 ALTER TABLE evento ADD CONSTRAINT CKRU CHECK(razon="union");
+ALTER TABLE evento ADD CONSTRAINT CKRCU CHECK(razon="cumpleaños");
+ALTER TABLE evento ADD CONSTRAINT CKRQ CHECK(razon="quinces");
+ALTER TABLE evento ADD CONSTRAINT CKRM CHECK(razon="matrimonio");
+
 ## UBICACION
 CREATE TABLE ubicacion(
     direccion_completa VARCHAR(100) PRIMARY KEY,
@@ -85,8 +90,8 @@ CREATE TABLE delegacion(
     funcion    VARCHAR(100) NOT NULL,
     PRIMARY KEY(ced_emp,cod_evento,funcion)
 )ENGINE=INNODB;
-ALTER TABLE delegacion ADD CONSTRAINT CKFG CHECK(funcion="administrador");
-ALTER TABLE delegacion ADD CONSTRAINT CKFC CHECK(funcion="catering");
+ALTER TABLE delegacion ADD CONSTRAINT CKFG CHECK(funcion="general");
+ALTER TABLE delegacion ADD CONSTRAINT CKFC CHECK(funcion="alimentacion");
 ALTER TABLE delegacion ADD CONSTRAINT CKFD CHECK(funcion="decoracion");
 ALTER TABLE delegacion ADD CONSTRAINT CKFE CHECK(funcion="entretenimiento");
 
