@@ -48,8 +48,8 @@
                         <!--formulario para insertar una sede mediante el metodo post-->
                         <form action="insert_evento.php" class="form-group" method="post">
                             <div class="form-group">
-                                <label for="codigo">Codigo</label>
-                                <input type="text" name="codigo" id="codigo" class="form-control" required>
+                                <label for="nit">Nit</label>
+                                <input type="text" name="nit" id="nit" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="fecha">Fecha</label>
@@ -84,6 +84,7 @@
                 <table class="table border-rounded">
                     <thead class="thead-dark">
                         <tr>
+                            <th scope="col">Nit</th>
                             <th scope="col">Codigo</th>
                             <th scope="col">Razon</th>
                             <th scope="col">Fecha</th>
@@ -98,7 +99,9 @@
                             foreach ($result as $fila){
                         ?>
                         <tr>
-                            <td><?=$fila['codigo'];?></td>
+                            <td><?=$fila['nit'];?></td>  
+
+                            <td><?=$fila['cod_evento'];?></td>
 
                             <td><?=$fila['razon'];?></td>
 
@@ -118,7 +121,8 @@
                             </td>
                             <td class="mx-0 pr-2">
                                 <form action="evento.php" method="GET">
-                                    <input type="text" name="codigo" value=<?=$fila['codigo'];?> hidden>
+                                    <input type="text" name="nit" value=<?=$fila['nit'];?> hidden>
+                                    <input type="text" name="cod_evento" value=<?=$fila['cod_evento'];?> hidden>
                                     <input type="text" name="razon" value='<?=$fila['razon'];?>' hidden>
                                     <input type="text" name="fecha" value='<?=$fila['fecha'];?>' hidden>
                                     <input type="text" name="presupuesto" value=<?=$fila['presupuesto'];?> hidden>
