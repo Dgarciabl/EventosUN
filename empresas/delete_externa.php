@@ -8,9 +8,9 @@ $pass = "trabajobd";
 $DB = "trabajobd";
 $conn = mysqli_connect($host, $user, $pass, $DB) or die("Error al conectar a la DB " . mysqli_error($link));
 //query
-$query="delete empresa,contratada FROM empresa
-left join contratada
-on empresa.nit=contratada.nit
+$query="delete empresa,externa FROM empresa
+left join externa
+on empresa.nit=externa.nit
 where empresa.nit='$_POST[d]'" ;
 $result = mysqli_query($conn, $query) or 
 die(mysqli_error($conn));
