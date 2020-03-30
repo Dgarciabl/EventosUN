@@ -48,10 +48,6 @@
                         <!--formulario para insertar una sede mediante el metodo post--> 
                         <form action="insert_evento.php" class="form-group" method="post">
                             <div class="form-group">
-                                <label for="cod_evento">Codigo</label>
-                                <input type="number" name="cod_evento" id="cod_evento" class="form-control" required>
-                            </div>
-                            <div class="form-group">
                                 <label for="fecha">Fecha</label>
                                 <input type="date" name="fecha" id="fecha" class="form-control" required>
                             </div>
@@ -75,7 +71,8 @@
                                     <option value="conferencia">Conferencia</option>
                                 </select>
                             </div>
-                        <label for="nit">NIT</label>    
+                         <div>
+                         <label for="nit">NIT</label>    
                         <select name="nit" id="nit" class="from-control">
 						<option value="">Elija</option>
                     				<?php 
@@ -88,8 +85,11 @@
 
                                 		}
                             			}       
-                    				?>                        
-                				</select>
+                    				?>         
+                                    </select>
+                                    </div>   
+                                       
+                				
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary" value="REGISTRAR">
                             </div>                           
