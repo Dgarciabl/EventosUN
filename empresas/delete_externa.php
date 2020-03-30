@@ -15,7 +15,7 @@ $result = mysqli_query($conn, $query) or
 die(mysqli_error($conn));
  
 if($result){
-    header ("Location: sede.php");
+    header ("Location: empresas.php");
     
      
  }else{
