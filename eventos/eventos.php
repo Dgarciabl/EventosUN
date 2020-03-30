@@ -46,7 +46,7 @@
                     </div>
                     <div class="card-body">
                         <!--formulario para insertar una sede mediante el metodo post-->
-                        <form action="insert_contratada.php" class="form-group" method="post">
+                        <form action="insert_evento.php" class="form-group" method="post">
                             <div class="form-group">
                                 <label for="codigo">Codigo</label>
                                 <input type="text" name="codigo" id="codigo" class="form-control" required>
@@ -93,7 +93,7 @@
                     </thead>
                     <tbody>
                         <?php 
-                        require('select_externa.php');
+                        require('select_evento.php');
                         if($result){
                             foreach ($result as $fila){
                         ?>
@@ -109,7 +109,7 @@
                             <td><?=$fila['nombre'];?></td>
 
                             <td>
-                                <form action="delete_externa.php" method="POST">
+                                <form action="delete_evento.php" method="POST">
                                     <input type="text" value=<?=$fila['nit'];?> hidden>
                                     <input type="text" name="d" value=<?=$fila['nit'];?> hidden>
                                     <button class="btn btn-danger" title="eliminar" type="submit"><i
@@ -117,12 +117,12 @@
                                 </form>
                             </td>
                             <td class="mx-0 pr-2">
-                                <form action="empresas.php" method="GET">
-                                    <input type="text" name="nit" value=<?=$fila['nit'];?> hidden>
+                                <form action="evento.php" method="GET">
+                                    <input type="text" name="codigo" value=<?=$fila['codigo'];?> hidden>
+                                    <input type="text" name="razon" value='<?=$fila['razon'];?>' hidden>
+                                    <input type="text" name="fecha" value='<?=$fila['fecha'];?>' hidden>
+                                    <input type="text" name="presupuesto" value=<?=$fila['presupuesto'];?> hidden>
                                     <input type="text" name="nombre" value='<?=$fila['nombre'];?>' hidden>
-                                    <input type="text" name="direccion" value='<?=$fila['direccion'];?>' hidden>
-                                    <input type="text" name="telefono" value=<?=$fila['telefono'];?> hidden>
-                                    <input type="text" name="representante" value='<?=$fila['representante'];?>' hidden>
                                 </form>
                             </td>
                         </tr>
