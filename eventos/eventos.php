@@ -42,7 +42,7 @@
             <div class="col-6 px-2">
                 <div class="card">
                     <div class="card-header">
-                        Registrar Empresa Contratada
+                        Registrar Evento
                     </div>
                     <div class="card-body">
                         <!--formulario para insertar una sede mediante el metodo post-->
@@ -79,48 +79,8 @@
                     </div>
                     </div>
                 </div>
-                <div class="col-6 px-2">
-                    <div class="card">
-                        <div class="card-header">
-                            Registrar Empresa Externa
-                            </div>
-                        <div class="card-body">
-                        <!--formulario para insertar una sede mediante el metodo post-->
-                        <form action="insert_externa.php" class="form-group" method="post">
-                            <div class="form-group">
-                                <label for="nit">Nit</label>
-                                <input type="text" name="nit" id="nit" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="nombre">Nombre</label>
-                                <input type="text" name="nombre" id="nombre" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="direccion">Dirección</label>
-                                <input type="text" name="direccion" id="direccion" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="telefono">Teléfono</label>
-                                <input type="text" name="telefono" id="telefono" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="representante">Representante</label>
-                                <input type="text" name="representante" id="representante" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-primary" value="REGISTRAR">
-                            </div>                           
-                        </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        <div class="row">
         <div class="col-6 px-2">
                 <table class="table border-rounded">
-                    <div class="form-group">
-                            <label for="TBEE">Tabla Empresas Externas</label>
-                        </div>
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Nit</th>
@@ -173,64 +133,7 @@
                             ?>
                     </tbody>
                 </table>
-            </div>
-            <div class="col-6 px-2">
-                <table class="table border-rounded">
-                    <div class="form-group">
-                            <label for="TBEC">Tabla Empresas Contratadas</label>
-                        </div>
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Nit</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Direccion</th>
-                            <th scope="col">Telefono</th>
-                            <th scope="col">Especialidad</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                        require('select_contratada.php');
-                        if($result){
-                            foreach ($result as $fila){
-                        ?>
-                        <tr>
-                            <td><?=$fila['nit'];?></td>
-
-                            <td><?=$fila['nombre'];?></td>
-
-                            <td><?=$fila['direccion'];?></td>
-
-                            <td><?=$fila['telefono'];?></td>
-
-                            <td><?=$fila['especialidad'];?></td>
-                            <td>
-                                <form action="delete_contratada.php" method="POST">
-                                    <input type="text" value=<?=$fila['nit'];?> hidden>
-                                    <input type="text" name="d" value=<?=$fila['nit'];?> hidden>
-                                    <button class="btn btn-danger" title="eliminar" type="submit"><i
-                                            class="fas fa-trash-alt"></i></button>
-                                </form>
-                            </td>
-                            <td class="mx-0 pr-2">
-                                <form action="empresas.php" method="GET">
-                                    <input type="text" name="nit" value=<?=$fila['nit'];?> hidden>
-                                    <input type="text" name="nombre" value='<?=$fila['nombre'];?>' hidden>
-                                    <input type="text" name="direccion" value='<?=$fila['direccion'];?>' hidden>
-                                    <input type="text" name="telefono" value=<?=$fila['telefono'];?> hidden>
-                                    <input type="text" name="especialidad" value='<?=$fila['especialidad'];?>' hidden>
-                                </form>
-                            </td>
-                        </tr>
-                        <?php                    
-
-                                }
-                            }
-                            
-                            ?>
-                    </tbody>
-                </table>
-                </div>   
+            </div>   
             </div>
 </body>
 </html>
