@@ -22,6 +22,7 @@
         <table class="table border-rounded">
             <thead class="thead ">
                 <tr>
+                    <th scope="col">Nombre</th>
                     <th scope="col">Direccion</th>
                     <th scope="col">telefono</th>
                     <th scope="col">tipo</th>
@@ -35,7 +36,7 @@
                     $DB = "trabajobd";
                     $conn = mysqli_connect($host, $user, $pass, $DB) or die("Error al conectar a la DB " . mysqli_error($link));
 
-                        $query="SELECT direccion,telefono,tipo FROM empresa AS emp join evento AS eve 
+                        $query="SELECT nombre,direccion,telefono,tipo FROM empresa AS emp join evento AS eve 
 			on emp.nit=eve.nit
 			WHERE eve.cod_evento LIKE '$_POST[cod_busqueda]%'";                   
                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
@@ -43,7 +44,7 @@
                         foreach($result as $fila){
                         ?>
                             <tr>
-
+                                <td><?=$fila['nombre'];?></td>
                                 <td><?=$fila['direccion'];?></td>
                                 <td><?=$fila['telefono'];?></td>
                                 <td><?=$fila['tipo'];?></td>
