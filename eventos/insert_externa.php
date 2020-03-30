@@ -7,7 +7,7 @@ $conn = mysqli_connect($host, $user, $pass, $DB) or die("Error al conectar a la 
 $nombre=$_POST[`nombre`];
 
 if($nombre===""){
-	$query="INSERT INTO `evento`(`cod_evento`,`razon`,`fecha`,`presupuesto`, `nobre`)
+	$query="INSERT INTO `evento`(`cod_evento`,`razon`,`fecha`,`presupuesto`, `nombre`)
  	VALUES ('$_POST[cod_evento]','$_POST[razon]','$_POST[fecha]','$_POST[presupuesto]',NULL)";
 	$result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 	}else{
