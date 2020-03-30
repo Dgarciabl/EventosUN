@@ -46,10 +46,10 @@
                     </div>
                     <div class="card-body">
                         <!--formulario para insertar una sede mediante el metodo post-->
-                        <form action="insert_contratada.php" class="form-group" method="post">
+                        <form action="insert_evento.php" class="form-group" method="post">
                             <div class="form-group">
-                                <label for="codigo">Codigo</label>
-                                <input type="text" name="codigo" id="codigo" class="form-control" required>
+                                <label for="nit">Nit</label>
+                                <input type="text" name="nit" id="nit" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="fecha">Fecha</label>
@@ -84,6 +84,7 @@
                 <table class="table border-rounded">
                     <thead class="thead-dark">
                         <tr>
+                            <th scope="col">Nit</th>
                             <th scope="col">Codigo</th>
                             <th scope="col">Razon</th>
                             <th scope="col">Fecha</th>
@@ -93,12 +94,14 @@
                     </thead>
                     <tbody>
                         <?php 
-                        require('select_externa.php');
+                        require('select_evento.php');
                         if($result){
                             foreach ($result as $fila){
                         ?>
                         <tr>
-                            <td><?=$fila['codigo'];?></td>
+                            <td><?=$fila['nit'];?></td>  
+
+                            <td><?=$fila['cod_evento'];?></td>
 
                             <td><?=$fila['razon'];?></td>
 
@@ -109,7 +112,7 @@
                             <td><?=$fila['nombre'];?></td>
 
                             <td>
-                                <form action="delete_externa.php" method="POST">
+                                <form action="delete_evento.php" method="POST">
                                     <input type="text" value=<?=$fila['nit'];?> hidden>
                                     <input type="text" name="d" value=<?=$fila['nit'];?> hidden>
                                     <button class="btn btn-danger" title="eliminar" type="submit"><i
@@ -117,12 +120,13 @@
                                 </form>
                             </td>
                             <td class="mx-0 pr-2">
-                                <form action="empresas.php" method="GET">
+                                <form action="evento.php" method="GET">
                                     <input type="text" name="nit" value=<?=$fila['nit'];?> hidden>
+                                    <input type="text" name="cod_evento" value=<?=$fila['cod_evento'];?> hidden>
+                                    <input type="text" name="razon" value='<?=$fila['razon'];?>' hidden>
+                                    <input type="text" name="fecha" value='<?=$fila['fecha'];?>' hidden>
+                                    <input type="text" name="presupuesto" value=<?=$fila['presupuesto'];?> hidden>
                                     <input type="text" name="nombre" value='<?=$fila['nombre'];?>' hidden>
-                                    <input type="text" name="direccion" value='<?=$fila['direccion'];?>' hidden>
-                                    <input type="text" name="telefono" value=<?=$fila['telefono'];?> hidden>
-                                    <input type="text" name="representante" value='<?=$fila['representante'];?>' hidden>
                                 </form>
                             </td>
                         </tr>

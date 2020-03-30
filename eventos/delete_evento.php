@@ -13,7 +13,7 @@ $result = mysqli_query($conn, $query) or
 die(mysqli_error($conn));
  
 if($result){
-    header ("Location: evento.php");   
+    header ("Location: eventos.php");   
  }else{
      echo "Ha ocurrido un error al Eliminar  el evento";
  }
