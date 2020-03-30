@@ -5,8 +5,8 @@ $pass = "trabajobd";
 $DB = "trabajobd";
 $conn = mysqli_connect($host, $user, $pass, $DB) or die("Error al conectar a la DB " . mysqli_error($link));
 
-$query="INSERT INTO `empresa`(`nit`,`nombre`,`direccion`,`telefono`, `tipo`)
- 		VALUES ('$_POST[nit]','$_POST[nombre]','$_POST[direccion]','$_POST[telefono]','contratada')";
+$query="INSERT INTO `evento`(`cod_evento`,`tipo`,`fecha`,`presupuesto`, `nombre`)
+ 		VALUES ('$_POST[cod_evento]','$_POST[tipo]','$_POST[fecha]','$_POST[presupuesto]','nombre')";
 $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 if($result){
 	$query="INSERT INTO `contratada`(`nit`,`especialidad`)

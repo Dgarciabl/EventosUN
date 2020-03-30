@@ -48,27 +48,28 @@
                         <!--formulario para insertar una sede mediante el metodo post-->
                         <form action="insert_contratada.php" class="form-group" method="post">
                             <div class="form-group">
-                                <label for="nit">Nit</label>
-                                <input type="text" name="nit" id="nit" class="form-control" required>
+                                <label for="codigo">Codigo</label>
+                                <input type="text" name="codigo" id="codigo" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="nombre">Nombre</label>
+                                <label for="fecha">Fecha</label>
+                                <input type="date" name="fecha" id="fecha" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="presupuesto">Presupuesto</label>
+                                <input type="number" name="presupuesto" id="presupuesto" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for= "nombre">Nombre </label>
                                 <input type="text" name="nombre" id="nombre" class="form-control" required>
                             </div>
-                            <div class="form-group">
-                                <label for="direccion">Dirección</label>
-                                <input type="text" name="direccion" id="direccion" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="telefono">Teléfono</label>
-                                <input type="text" name="telefono" id="telefono" class="form-control" required>
-                            </div>
                             <div>
-                                <label for="subtipo">Especialidad</label>
-                                <select id="subtipo" name="subtipo">
-                                    <option value="catering">Catering</option>
-                                    <option value="decoracion">Decoracion</option>
-                                    <option value="entretenimiento">Entretenimiento</option>
+                                <label for="razon">razon</label>
+                                <select id="razon" name="razon">
+                                    <option value="union">Union</option>
+                                    <option value="reunion">Reunion</option>
+                                    <option value="aniversario">Aniversario</option>
+                                    <option value="conferencia">Conferencia</option>
                                 </select>
                             </div>
 
@@ -83,11 +84,10 @@
                 <table class="table border-rounded">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">Nit</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Direccion</th>
-                            <th scope="col">Telefono</th>
-                            <th scope="col">Representante</th>
+                            <th scope="col">codigo</th>
+                            <th scope="col">razon</th>
+                            <th scope="col">fecha</th>
+                            <th scope="col">nombre</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -97,15 +97,15 @@
                             foreach ($result as $fila){
                         ?>
                         <tr>
-                            <td><?=$fila['nit'];?></td>
+                            <td><?=$fila['codigo'];?></td>
+
+                            <td><?=$fila['razon'];?></td>
+
+                            <td><?=$fila['fecha'];?></td>
+
+                            <td><?=$fila['presupuesto'];?></td>
 
                             <td><?=$fila['nombre'];?></td>
-
-                            <td><?=$fila['direccion'];?></td>
-
-                            <td><?=$fila['telefono'];?></td>
-
-                            <td><?=$fila['representante'];?></td>
 
                             <td>
                                 <form action="delete_externa.php" method="POST">
