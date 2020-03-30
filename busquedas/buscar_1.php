@@ -44,7 +44,7 @@
                         foreach($result as $fila){
                         if($fila['tipo']==="externa"){
                             $query="SELECT * FROM empresa natural join externa WHERE nit=$fila['emp.nit']"
-                            $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+                            $result = mysqli_query($conn, $quer) or die(mysqli_error($conn));
 
                                 ?>
                             <tr>

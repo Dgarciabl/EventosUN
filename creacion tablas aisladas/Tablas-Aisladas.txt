@@ -1,37 +1,46 @@
 USE trabajobd;
-##empresa
+
+###EMPRESA
 CREATE TABLE empresa(
-      nit         INT(10) PRIMARY KEY,
+      nit         INT(10) PRIMARY KEY ,
       nombre      VARCHAR(100) NOT NULL,
       direccion   VARCHAR(100) NOT NULL,
       telefono    VARCHAR(100) NOT NULL,
-      tipo        VARCHAR(100) NOT NULL
+      tipo        VARCHAR(100) NOT NULL 
 )ENGINE=INNODB;
-ALTER TABLE empresa ADD CONSTRAINT CKTE CHECK(tipo="externa");
-ALTER TABLE empresa ADD CONSTRAINT CKTC CHECK(tipo="contratada");
-##empresa subtipo externa
+ALTER TABLE empresa ADD CONSTRAINT CK_ex CHECK(tipo="externa");
+ALTER TABLE empresa ADD CONSTRAINT CK_con CHECK(tipo="contratada");
+
+###EXTERNA
 CREATE TABLE externa(
-      nit         INT(10) PRIMARY KEY REFERENCES empresa(nit),
+      nit         INT(10)   REFERENCES empresa(nit),
       representante  VARCHAR(100) NOT NULL
 )ENGINE=INNODB;
-##empresa subtipo contratada
+
+###CONTRATADA
 CREATE TABLE contratada(
-      nit            INT(10) PRIMARY KEY REFERENCES empresa(nit),
+      nit            INT(10) REFERENCES empresa(nit),
       especialidad      VARCHAR(100) NOT NULL
 )ENGINE=INNODB;
-ALTER TABLE contratada ADD CONSTRAINT CKEC CHECK(especialidad="catering");
-ALTER TABLE contratada ADD CONSTRAINT CKED CHECK(especialidad="decoracion");
-ALTER TABLE contratada ADD CONSTRAINT CKEE CHECK(especialidad="entretenimiento");
-##evento
+ALTER TABLE contratada ADD CONSTRAINT CK_deco CHECK(especialidad="decoracion");
+ALTER TABLE contratada ADD CONSTRAINT CK_entre CHECK(especialidad="entretenimiento");
+ALTER TABLE contratada ADD CONSTRAINT CK_cat CHECK(especialidad="catering");
+
+
+###EVENTO 
 CREATE TABLE evento(
-      nit                 INT(10) REFERENCES empresa(nit) on DELETE CASCADE,
+      nit                 INT(10) NOT NULL,
       cod_evento          INT(10) PRIMARY KEY AUTO_INCREMENT,
-      razon               VARCHAR(100) NOT NULL,
+      razon                VARCHAR(100) NOT NULL,
       fecha               DATE NOT NULL,
       presupuesto         VARCHAR(100) NOT NULL,
-      nombre              VARCHAR(100)
+      nombre_evento              VARCHAR(100),
+      ubicacion           VARCHAR(100),
+      CONSTRAINT FK_evento FOREIGN KEY (nit)
+      REFERENCES empresa(nit) ON DELETE CASCADE
 )ENGINE=INNODB;
-ALTER TABLE evento ADD CONSTRAINT CKRC CHECK(razon="conferencia");
-ALTER TABLE evento ADD CONSTRAINT CKRA CHECK(razon="aniversario");
-ALTER TABLE evento ADD CONSTRAINT CKRR CHECK(razon="reunion");
-ALTER TABLE evento ADD CONSTRAINT CKRU CHECK(razon="union");
+ 
+ALTER TABLE evento ADD CONSTRAINT CK_cumple CHECK(tipo="cumpleaños");
+ALTER TABLE evento ADD CONSTRAINT CK_aniversario CHECK(tipo="aniversario");
+ALTER TABLE evento ADD CONSTRAINT CK_quinces CHECK(tipo="quinces");
+ALTER TABLE evento ADD CONSTRAINT CK_union CHECK(tipo="union")
