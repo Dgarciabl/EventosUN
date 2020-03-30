@@ -77,14 +77,14 @@
                             </div>                           
                         </form>
                     </div>
-                    </div>
                 </div>
-                <div class="col-6 px-2">
-                    <div class="card">
-                        <div class="card-header">
-                            Registrar Empresa Externa
-                            </div>
-                        <div class="card-body">
+            </div>
+            <div class="col-6 px-2">
+                <div class="card">
+                    <div class="card-header">
+                         Registrar Empresa Externa
+                    </div>
+                    <div class="card-body">
                         <!--formulario para insertar una sede mediante el metodo post-->
                         <form action="insert_externa.php" class="form-group" method="post">
                             <div class="form-group">
@@ -111,16 +111,16 @@
                                 <input type="submit" class="btn btn-primary" value="REGISTRAR">
                             </div>                           
                         </form>
-                            </div>
-                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
         <div class="row">
-        <div class="col-6 px-2">
+            <div class="col-6 px-2">
                 <table class="table border-rounded">
                     <div class="form-group">
-                            <label for="TBEE">Tabla Empresas Externas</label>
-                        </div>
+                        <label for="TBEE">Tabla Empresas Externas</label>
+                    </div>
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Nit</th>
@@ -134,25 +134,19 @@
                         <?php 
                         require('select_externa.php');
                         if($result){
-                            foreach ($result as $fila){
+                        foreach ($result as $fila){
                         ?>
                         <tr>
                             <td><?=$fila['nit'];?></td>
-
                             <td><?=$fila['nombre'];?></td>
-
                             <td><?=$fila['direccion'];?></td>
-
                             <td><?=$fila['telefono'];?></td>
-
                             <td><?=$fila['representante'];?></td>
-
                             <td>
                                 <form action="delete_externa.php" method="POST">
                                     <input type="text" value=<?=$fila['nit'];?> hidden>
                                     <input type="text" name="d" value=<?=$fila['nit'];?> hidden>
-                                    <button class="btn btn-danger" title="eliminar" type="submit"><i
-                                            class="fas fa-trash-alt"></i></button>
+                                    <button class="btn btn-danger" title="eliminar" type="submit"><iclass="fas fa-trash-alt"></i></button>
                                 </form>
                             </td>
                             <td class="mx-0 pr-2">
@@ -165,11 +159,9 @@
                                 </form>
                             </td>
                         </tr>
-                        <?php                    
-
+                            <?php                    
+                                    }
                                 }
-                            }
-                            
                             ?>
                     </tbody>
                 </table>
@@ -177,8 +169,8 @@
             <div class="col-6 px-2">
                 <table class="table border-rounded">
                     <div class="form-group">
-                            <label for="TBEC">Tabla Empresas Contratadas</label>
-                        </div>
+                        <label for="TBEC">Tabla Empresas Contratadas</label>
+                    </div>
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Nit</th>
@@ -196,20 +188,15 @@
                         ?>
                         <tr>
                             <td><?=$fila['nit'];?></td>
-
                             <td><?=$fila['nombre'];?></td>
-
                             <td><?=$fila['direccion'];?></td>
-
                             <td><?=$fila['telefono'];?></td>
-
                             <td><?=$fila['especialidad'];?></td>
                             <td>
                                 <form action="delete_contratada.php" method="POST">
                                     <input type="text" value=<?=$fila['nit'];?> hidden>
                                     <input type="text" name="d" value=<?=$fila['nit'];?> hidden>
-                                    <button class="btn btn-danger" title="eliminar" type="submit"><i
-                                            class="fas fa-trash-alt"></i></button>
+                                    <button class="btn btn-danger" title="eliminar" type="submit"><iclass="fas fa-trash-alt"></i></button>
                                 </form>
                             </td>
                             <td class="mx-0 pr-2">
@@ -223,14 +210,14 @@
                             </td>
                         </tr>
                         <?php                    
-
                                 }
                             }
-                            
-                            ?>
+                        ?>
                     </tbody>
                 </table>
                 </div>   
             </div>
+        </div>
+    </div>
 </body>
 </html>
