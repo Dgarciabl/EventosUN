@@ -1,0 +1,19 @@
+CONSIDERACIONES:
+
+1. Para ejecutar el siguiente trabajo, debe usar un usuario en phpMyAdmin llamado "root" y con esa
+misma palabra como contraseña. Además de las tablas especificadas en el punto 4.
+
+2. En la analogía planteada por el docente Francisco, lo siguiente corresponde a nuestra adaptación:
+  -La entidad empresa, en nuestro trabajo corresponde a la entidad empresa.
+  -La entidad nacional, en nuestro trabajo corresponde a la entidad externa.
+  -La entidad internacional, en nuestro trabajo corresponde a la entidad contratada.
+  -La entidad local, en nuestro trabajo corresponde a la entidad evento.
+
+3. La carpeta llamada "PUNTO 1" corresponde a la instrucción de creación de todas las 
+tablas en SQL de todo el modelo entidad-relación presentado, el modelo verbal corregido y su respectivo modelo E-R
+
+4. La carpeta llamada "creacion tablas aislada" corresponde a la instrucción de creación en SQL de las 4 
+entidades necesarias para los puntos 2 y 3 del trabajo.
+
+5. El resto de carpetas, archivos o documentos, corresponden a los formularios y desarrollo de los puntos 2 y 3 
+del trabajo.
