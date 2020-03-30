@@ -87,6 +87,7 @@
                             <th scope="col">codigo</th>
                             <th scope="col">razon</th>
                             <th scope="col">fecha</th>
+                            <th scope="col">presupuesto</th>
                             <th scope="col">nombre</th>
                         </tr>
                     </thead>
