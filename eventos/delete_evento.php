@@ -7,19 +7,15 @@ $pass = "trabajobd";
 $DB = "trabajobd";
 $conn = mysqli_connect($host, $user, $pass, $DB) or die("Error al conectar a la DB " . mysqli_error($link));
 //query
-$query="delete empresa,contratada FROM empresa
-left join contratada
-on empresa.nit=contratada.nit
-where empresa.nit='$_POST[d]'" ;
+$query="delete evento FROM evento
+where cod_evento='$_POST[d]'" ;
 $result = mysqli_query($conn, $query) or 
 die(mysqli_error($conn));
  
 if($result){
-    header ("Location: empresas.php");
-    
-     
+    header ("Location: evento.php");   
  }else{
-     echo "Ha ocurrido un error al Eliminar  la sede";
+     echo "Ha ocurrido un error al Eliminar  el evento";
  }
  
 mysqli_close($conn);

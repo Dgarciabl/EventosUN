@@ -1,19 +1,24 @@
 ﻿<?php
  
 // Create connection
-require('../configuraciones/conexionbd.php');
+$host = "localhost";
+$user = "trabajobd";
+$pass = "trabajobd";
+$DB = "trabajobd";
+$conn = mysqli_connect($host, $user, $pass, $DB) or die("Error al conectar a la DB " . mysqli_error($link));
 
 //query
-$query="UPDATE sede SET direccion='$_POST[direccion]',municipio='$_POST[municipio]',nombre='$_POST[nombre]',telefono='$_POST[telefono]',email='$_POST[email]' WHERE codigo='$_POST[codigo]'";
+$query="UPDATE empresa SET nombre='$_POST[nombre]',direccion='$_POST[direccion]',telefono='$_POST[telefono]' 
+        WHERE nit='$_POST[codigo]'";
 $result = mysqli_query($conn, $query) or 
 die(mysqli_error($conn));
  
 if($result){
-    header ("Location: sede.php");
+    header ("Location: empresas.php");
     
      
  }else{
-     echo "Ha ocurrido un error al Eliminar  la sede";
+     echo "Ha ocurrido un error al Eliminar  el evento";
  }
  
 mysqli_close($conn);
