@@ -22,18 +22,21 @@
         <table class="table border-rounded">
             <thead class="thead ">
                 <tr>
-                    <th scope="col">RUT</th>
+                    <th scope="col">Nit</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Tipo</th>
                 </tr>
             </thead>
             <tbody>
             <?php
-                    require('../configuraciones/conexionbd.php');
-                    $query="SELECT * FROM marca_proveedora AS marca JOIN (SELECT  rut AS rut_join ,SUM(cubre_valor) AS total
-		    FROM garantia AS g, marca_proveedora AS mp
-		    WHERE mp.rut= g.rut_mp 
-		    GROUP BY mp.rut) AS tablaa
-            ON  marca.rut=tablaa.rut_join
+                    require('../configuracion/conexionbd.php');
+                    $query="SELECT * FROM empresa AS emp JOIN (SELECT  emp.nit AS nit_join ,SUM(cod_evento) AS total
+		    FROM evento AS eve, empresa AS emp
+		    WHERE emp.nit= eve.nit 
+		    GROUP BY emp.nit) AS tablaA
+            ON  nit=tablaA.nit_join
             WHERE total<=5000";
                    
                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
@@ -41,8 +44,11 @@
                         foreach($result as $fila){
                         ?>
                             <tr>
-                                <td><?=$fila['rut'];?></td>
+                                <td><?=$fila['nit'];?></td>
                                 <td><?=$fila['nombre'];?></td>
+                                <td><?=$fila['direccion'];?></td>
+                                <td><?=$fila['telefono'];?></td>
+                                <td><?=$fila['tipo'];?></td>
                             </tr>
                         <?php
                         }
