@@ -1,0 +1,105 @@
+USE TiendaVirtual;
+## PERSONA
+CREATE TABLE persona(
+    cedula		INT(10) PRIMARY KEY,
+    nombre 	        VARCHAR (100) NOT NULL,
+    fechanacimiento 	DATE NOT NULL,
+    direccion 		VARCHAR(100) NOT NULL,
+    telefonocelular 	VARCHAR(100) NOT NULL,
+    correoelectronico 	VARCHAR(100) NOT NULL,
+    telefonofijo 	VARCHAR(100) NOT NULL,
+    salario             VARCHAR(100) ,
+    Correolaboral       VARCHAR(100) UNIQUE,
+    tipo                VARCHAR(100) NOT NULL   
+)ENGINE=INNODB;
+ALTER TABLE persona ADD CONSTRAINT CK_tipoe CHECK(tipo='empleado' OR tipo=NULL);
+ALTER TABLE persona ADD CONSTRAINT CK_Nullif CHECK((tipo IS NULL AND salario IS NULL AND correolaboral IS NULL) OR (tipo="empleado" AND salario IS NOT NULL AND correolaboral IS NOT NULL)); 
+
+## EMPRESA
+CREATE TABLE empresa(
+    NIT                  INT(10) PRIMARY KEY,
+    nombre               VARCHAR(100) NOT NULL,
+    direccion            VARCHAR(100) NOT NULL,
+    telefono             VARCHAR(100) NOT NULL,
+    especialidad         VARCHAR(100),
+    tipo                 VARCHAR(100) NOT NULL  
+)ENGINE=INNODB;
+ALTER TABLE empresa ADD CONSTRAINT CK_tipopresa CHECK(tipo='Contratada' OR tipo='No Contratada');
+ALTER TABLE empresa ADD CONSTRAINT CK_NullESP CHECK((tipo="No contratada" AND especialidad IS NULL) OR (tipo="Contratada" AND especialidad IS NOT NULL));
+
+## DECORACION
+CREATE TABLE Decoracion(
+    NIT                         INT(10) NOT NULL REFERENCES empresa(NIT),
+    nrocontrato                 INT(10) NOT NULL AUTO_INCREMENT,
+    costo_Hora_Auxiliar              VARCHAR(100) NOT NULL,
+    costo_Materiales                 VARCHAR(100) NOT NULL,
+    nro_auxiliares                   VARCHAR(100) NOT NULL      
+)ENGINE=INNODB;
+
+## ENTRETENIMIENTO
+CREATE TABLE Entretenimiento(
+    NIT                         INT(10) NOT NULL REFERENCES empresa(NIT),
+    nrocontrato                 INT(10) PRIMARY KEY AUTO_INCREMENT,
+    costo_por_hora                    VARCHAR(100) NOT NULL,
+    tipo_de_entretenimiento           VARCHAR(100) NOT NULL
+)ENGINE=INNODB;
+
+## CATERING
+CREATE TABLE Catering(
+    NIT                         INT(10) NOT NULL REFERENCES empresa(NIT),
+    nrocontrato                 INT(10) PRIMARY KEY AUTO_INCREMENT,
+    menu                            VARCHAR(100) NOT NULL,
+    costo_por_plato                 VARCHAR(100) NOT NULL,
+    total_platos                    VARCHAR(100) NOT NULL,
+    restricciones                   VARCHAR(100) NOT NULL
+)ENGINE=INNODB;
+
+## EVENTO
+CREATE TABLE evento(
+    Codigo               INT(10) PRIMARY KEY AUTO_INCREMENT,
+    razon                VARCHAR(100) NOT NULL,
+    Fecha                DATE NOT NULL,
+    Presupuesto          VARCHAR(100) NOT NULL,
+    Nombre               VARCHAR(100) NOT NULL,
+    NIT                  INT(10) REFERENCES empresa(NIT),
+    Cedula               INT(10) REFERENCES persona(Cedula),
+    decoracion           INT(10) NOT NULL REFERENCES decoracion(nrocontrato_deco),
+    catering             INT(10) NOT NULL REFERENCES catering(nrocontrato_cat)
+)ENGINE=INNODB;
+ALTER TABLE evento ADD CONSTRAINT CK_nulidad CHECK((NIT IS NULL AND Cedula IS NOT NULL) OR (NIT IS NOT NULL AND Cedula IS NULL));
+ALTER TABLE evento ADD CONSTRAINT CKRC CHECK(razon="conferencia");
+ALTER TABLE evento ADD CONSTRAINT CKRA CHECK(razon="aniversario");
+ALTER TABLE evento ADD CONSTRAINT CKRR CHECK(razon="reunion");
+ALTER TABLE evento ADD CONSTRAINT CKRU CHECK(razon="union");
+## UBICACION
+CREATE TABLE ubicacion(
+    direccion_completa VARCHAR(100) PRIMARY KEY,
+    capacidad          VARCHAR(100) NOT NULL,
+    precio             VARCHAR(100)
+)ENGINE=INNODB;
+
+## DELEGACION
+CREATE TABLE delegacion(
+    ced_emp    INT(10) NOT NULL REFERENCES persona(cedula),
+    cod_evento INT(10) NOT NULL REFERENCES evento(codigo),
+    funcion    VARCHAR(100) NOT NULL,
+    PRIMARY KEY(ced_emp,cod_evento,funcion)
+)ENGINE=INNODB;
+ALTER TABLE delegacion ADD CONSTRAINT CKFG CHECK(funcion="administrador");
+ALTER TABLE delegacion ADD CONSTRAINT CKFC CHECK(funcion="catering");
+ALTER TABLE delegacion ADD CONSTRAINT CKFD CHECK(funcion="decoracion");
+ALTER TABLE delegacion ADD CONSTRAINT CKFE CHECK(funcion="entretenimiento");
+
+## INVITADO
+CREATE TABLE invitado(
+    ced_persona    INT(10) NOT NULL REFERENCES persona(cedula),
+    cod_eventoinv  INT(10) NOT NULL REFERENCES evento(codigo),
+    PRIMARY KEY(ced_persona,cod_eventoinv) 
+)ENGINE=INNODB;
+
+##ENTRETENIMIENTOXEVENTO
+CREATE TABLE interseccionExE(
+    nrocontrato     INT(10) NOT NULL REFERENCES entretenimiento(nrocontrato_entre),
+    cod_evento      INT(10) NOT NULL REFERENCES evento(codigo),
+    PRIMARY KEY(nrocontrato,cod_evento)
+)ENGINE=INNODB
