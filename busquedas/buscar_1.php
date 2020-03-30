@@ -36,18 +36,36 @@
                     $DB = "trabajobd";
                     $conn = mysqli_connect($host, $user, $pass, $DB) or die("Error al conectar a la DB " . mysqli_error($link));
 
-                        $query="SELECT nombre,direccion,telefono,tipo FROM empresa AS emp join evento AS eve 
+                        $query="SELECT emp.nit,tipo FROM empresa AS emp join evento AS eve 
 			on emp.nit=eve.nit
 			WHERE eve.cod_evento LIKE '$_POST[cod_busqueda]%'";                   
                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
                     if($result){
                         foreach($result as $fila){
-                        ?>
+                        if($fila['tipo']==="externa"){
+                            $query="SELECT * FROM empresa natural join externa WHERE nit=$fila['emp.nit']"
+                            $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+
+                                ?>
                             <tr>
                                 <td><?=$fila['nombre'];?></td>
                                 <td><?=$fila['direccion'];?></td>
                                 <td><?=$fila['telefono'];?></td>
                                 <td><?=$fila['tipo'];?></td>
+                                <td><?=$fila['representante'];?></td>
+                            </tr>
+                        <?php
+                        }
+                        elseif($fila['tipo']==="contratada"){
+                            $query="SELECT * FROM empresa natural join contratada WHERE nit=$fila['emp.nit']"
+                            $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+                                ?>
+                            <tr>
+                                <td><?=$fila['nombre'];?></td>
+                                <td><?=$fila['direccion'];?></td>
+                                <td><?=$fila['telefono'];?></td>
+                                <td><?=$fila['tipo'];?></td>
+                                <td><?=$fila['especialidad'];?></td>
                             </tr>
                         <?php
                         }
