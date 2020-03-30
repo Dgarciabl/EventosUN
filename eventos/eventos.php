@@ -49,19 +49,6 @@
                         <form action="insert_contratada.php" class="form-group" method="post">
                             <div class="form-group">
                                 <label for="codigo">Codigo</label>
-                                <?php  
-                                    $host = "localhost";
-                                    $user = "trabajobd";
-                                    $pass = "trabajobd";
-                                    $DB = "trabajobd";
-                                    $conn = mysqli_connect($host, $user, $pass, $DB) or die("Error al conectar a la DB " . mysqli_error($link));
-                                    $query="select nit,nombre,tipo from empresa;";
-                                    $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
-                                    $options=$result->use_results();
-                                    for($obj in_array($options)){
-                                        <option value="union">$obj</option>
-                                    }
-                                ?>
                                 <input type="text" name="codigo" id="codigo" class="form-control" required>
                             </div>
                             <div class="form-group">
