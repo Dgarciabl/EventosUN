@@ -36,7 +36,7 @@
                     $DB = "trabajobd";
                     $conn = mysqli_connect($host, $user, $pass, $DB) or die("Error al conectar a la DB " . mysqli_error($link));
 
-                        $query="SELECT nombre,direccion,telefono,tipo FROM empresa AS emp join evento AS eve 
+                        $query="SELECT tipo FROM empresa AS emp join evento AS eve 
 			on emp.nit=eve.nit
 			WHERE eve.cod_evento LIKE '$_POST[cod_busqueda]%'";                   
                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
