@@ -37,17 +37,17 @@
 
 
                 <form action="consultar_1.php" target="_blank"  method="POST">
-			<p>Consulta 1: Datos de garantías que no están asociadas a ni una sede ni a una marca proveedora.</p>
+			<p>Consulta 1: Empresas externas que han tenido de 2 a 4 eventos.</p>
 			<button class="btn  btn-primary"  title="consultar_1" type="submit">
                             <i class="fas fa-search-plus mx-0 my-0"> </i></button>
 			</form>
 			<form action="consultar_2.php" target="_blank"  method="POST">
-			<p>Consulta 2: Código y nombre de sede con mayor número de garantías.</p>
+			<p>Consulta 2: Eventos de empresas contratadas que han tenido a menos 3 eventos.</p>
 			<button class="btn  btn-primary"  title="consultar_2" type="submit">
                             <i class="fas fa-search-plus mx-0 my-0"> </i></button>
 			</form>
 			<form action="consultar_3.php" target="_blank"  method="POST">
-			<p>Consulta 3: RUT y nombre de las marcas proveedoras cuyo valor total a cubrir en todas sus garantías es menor o igual a 5000.</p>
+			<p>Consulta 3: Datos de la empresa con mas eventos.</p>
 			<button class="btn  btn-primary"  title="consultar_3" type="submit">
                             <i class="fas fa-search-plus mx-0 my-0"> </i></button>
 			</form>

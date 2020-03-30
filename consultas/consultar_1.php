@@ -22,26 +22,35 @@
         <table class="table border-rounded">
             <thead class="thead ">
                 <tr>
-                    <th scope="col">Código</th>
-                    <th scope="col">Fecha Inicio</th>
-                    <th scope="col">Fecha Final</th>
-		    <th scope="col">Valor a cubrir</th>
+                    <th scope="col">Nit</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Representante</th>
                 </tr>
             </thead>
             <tbody>
             <?php
-                    require('../configuraciones/conexionbd.php');
-                    $query="SELECT * FROM garantia WHERE cod_sede IS NULL AND rut_mp IS NULL";
+                    $host = "localhost";
+                    $user = "trabajobd";
+                    $pass = "trabajobd";
+                    $DB = "trabajobd";
+                    $conn = mysqli_connect($host, $user, $pass, $DB) or die("Error al conectar a la DB " . mysqli_error($link));
+                    
+                    $query="SELECT * FROM empresas natural join externas ,count(* From eventos where nit_e=nit) as numevent
+                            group by nit
+                            WHERE  numevent>=3";
                    
                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
                     if($result){
                         foreach($result as $fila){
                         ?>
                             <tr>
-                                <td><?=$fila['codigo'];?></td>
-                                <td><?=$fila['fecha_inicio'];?></td>
-                                <td><?=$fila['fecha_final'];?></td>
-				<td><?=$fila['cubre_valor'];?></td>
+                                <td><?=$fila['nit'];?></td>
+                                <td><?=$fila['nombre'];?></td>
+                                <td><?=$fila['direccion'];?></td>
+                                <td><?=$fila['telefono'];?></td>
+                                <td><?=$fila['representante'];?></td>
                             </tr>
                         <?php
                         }
