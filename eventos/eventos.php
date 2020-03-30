@@ -84,11 +84,11 @@
                 <table class="table border-rounded">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">codigo</th>
-                            <th scope="col">razon</th>
-                            <th scope="col">fecha</th>
-                            <th scope="col">presupuesto</th>
-                            <th scope="col">nombre</th>
+                            <th scope="col">Codigo</th>
+                            <th scope="col">Razon</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Presupuesto</th>
+                            <th scope="col">Nombre</th>
                         </tr>
                     </thead>
                     <tbody>
