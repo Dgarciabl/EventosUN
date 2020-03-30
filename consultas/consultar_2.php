@@ -23,10 +23,12 @@
             <thead class="thead ">
                 <tr>
                     <th scope="col">Nit</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Direccion</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">Representante</th>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Razon</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Presupuesto</th>
+                    <th scope="col">Nombre Evento</th>
+                    <th scope="col">Ubicacion</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,10 +38,12 @@
                     $pass = "root";
                     $DB = "trabajobd";
                     $conn = mysqli_connect($host, $user, $pass, $DB) or die("Error al conectar a la DB " . mysqli_error($link));
-                    
-                    $query="SELECT * FROM empresas natural join contratada ,count(* From eventos where empresa.nit=contratada.nit) as numevent
-                            group by nit
-                            WHERE  numevent>=3";
+                    $query="SELECT * FROM evento where nit=(
+                        SELECT con2.nit from(
+                        SELECT eve.nit, COUNT(*) AS numevent
+                        FROM empresa AS emp INNER JOIN contratada AS cont ON emp.nit=cont.nit
+                        INNER JOIN evento AS eve ON emp.nit= eve.nit 
+                        )AS con2 WHERE numevent>=3)";
                    
                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
                     if($result){
@@ -47,10 +51,17 @@
                         ?>
                             <tr>
                                 <td><?=$fila['nit'];?></td>
-                                <td><?=$fila['nombre'];?></td>
-                                <td><?=$fila['direccion'];?></td>
-                                <td><?=$fila['telefono'];?></td>
-                                <td><?=$fila['especialidad'];?></td>
+                                <td><?=$fila['cod_evento'];?></td>
+
+                                <td><?=$fila['razon'];?></td>
+
+                                <td><?=$fila['fecha'];?></td>
+
+                                <td><?=$fila['presupuesto'];?></td>
+
+                                <td><?=$fila['nombre_evento'];?></td>
+
+                                <td><?=$fila['ubicacion'];?></td>
                             </tr>
                         <?php
                         }
