@@ -37,7 +37,7 @@
                     $DB = "trabajobd";
                     $conn = mysqli_connect($host, $user, $pass, $DB) or die("Error al conectar a la DB " . mysqli_error($link));
                     
-                    $query="SELECT * FROM empresas natural join externas ,count(* From eventos where empresas.nit=externa.nit) as numevent
+                    $query="SELECT * FROM empresas natural join externas ,count(cod_eventos) as numevent
                             group by nit
                             WHERE  numevent>=2 AND numevent<=4";
                    
