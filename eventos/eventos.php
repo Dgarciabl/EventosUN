@@ -24,16 +24,16 @@
             <a class="nav-link active" href="index.html">Inicio</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="./empresas/empresas.php">Empresas</a>
+            <a class="nav-link active" href="empresas/empresas.php">Empresas</a>
         </li>
         <li class="nav nav-pills">
-            <a class="nav-link active" href="./eventos/eventos.php">Eventos</a>
+            <a class="nav-link active" href="eventos/eventos.php">Eventos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="./busquedas/busquedas.php">Búsquedas</a>
+            <a class="nav-link" href="busquedas/busquedas.php">Búsquedas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="./consultas/consultas.php">Consultas</a>
+            <a class="nav-link" href="consultas/consultas.php">Consultas</a>
         </li>
     </ul>
     <!--formularios -->
