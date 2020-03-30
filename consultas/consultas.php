@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Autobahnen</title>
+    <title>Eventos UN</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -14,23 +14,20 @@
 
 <body>
     <ul class="nav">
-        <li class="nav nav-item">
-            <a class="nav-link " href="../index.html">Inicio</a>
+        <li class="nav-item">
+            <a class="nav-link active" href="index.html">Inicio</a>
         </li>
-        <li class="nav ">
-            <a class="nav-link " href="../sede/sede.php">Sedes</a>
+        <li class="nav nav-pills">
+            <a class="nav-link active" href="./empresas/empresas.php">Empresas</a>
         </li>
-        <li class="nav ">
-            <a class="nav-link " href="../marca_proveedora/marca_proveedora.php">Marcas Proveedoras</a>
+        <li class="nav-item">
+            <a class="nav-link active" href="./eventos/eventos.php">Eventos</a>
         </li>
-        <li class="nav">
-            <a class="nav-link" href="../garantias/garantias.php">Garantías</a>
+        <li class="nav-item">
+            <a class="nav-link" href="./busquedas/busquedas.php">Búsquedas</a>
         </li>
-        <li class="nav">
-            <a class="nav-link" href="../busquedas/busquedas.php">Búsquedas</a>
-        </li>
-	<li class="nav-item nav-pills">
-            <a class="nav-link active" href="consultas.php">Consultas</a>
+        <li class="nav-item">
+            <a class="nav-link" href="./consultas/consultas.php">Consultas</a>
         </li>
     </ul>
     <div class="container">

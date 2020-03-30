@@ -24,23 +24,20 @@
 <body>
     <!--Barra de navegacion-->
     <ul class="nav">
-        <li class="nav nav-item">
-            <a class="nav-link " href="../index.html">Inicio</a>
+        <li class="nav-item">
+            <a class="nav-link active" href="index.html">Inicio</a>
         </li>
-        <li class="nav ">
-            <a class="nav-link " href="../sede/sede.php">Sedes</a>
+        <li class="nav nav-pills">
+            <a class="nav-link active" href="./empresas/empresas.php">Empresas</a>
         </li>
-        <li class="nav ">
-            <a class="nav-link " href="../marca_proveedora/marca_proveedora.php">Marcas Proveedoras</a>
+        <li class="nav-item">
+            <a class="nav-link active" href="./eventos/eventos.php">Eventos</a>
         </li>
-        <li class="nav">
-            <a class="nav-link" href="../garantias/garantias.php">Garantías</a>
+        <li class="nav-item">
+            <a class="nav-link" href="./busquedas/busquedas.php">Búsquedas</a>
         </li>
-        <li class="nav-item nav-pills">
-            <a class="nav-link active" href="busquedas.php">Búsquedas</a>
-        </li>
-        <li class="nav ">
-            <a class="nav-link " href="../consultas/consultas.php">Consultas</a>
+        <li class="nav-item">
+            <a class="nav-link" href="./consultas/consultas.php">Consultas</a>
         </li>
     </ul>
     <div class="container">

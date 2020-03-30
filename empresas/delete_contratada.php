@@ -1,7 +1,6 @@
 ﻿<?php
  
 // Create connection
-require('../configuraciones/conexionbd.php');
 $host = "localhost";
 $user = "trabajobd";
 $pass = "trabajobd";
