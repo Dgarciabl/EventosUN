@@ -1,9 +1,5 @@
 ﻿<?php
-$host = "localhost";
-$user = "trabajobd";
-$pass = "trabajobd";
-$DB = "trabajobd";
-$conn = mysqli_connect($host, $user, $pass, $DB) or die("Error al conectar a la DB " . mysqli_error($link));
+require('../configuraciones/conexionbd.php');
 
 $query="INSERT INTO `empresa`(`nit`,`nombre`,`direccion`,`telefono`, `tipo`)
  		VALUES ('$_POST[nit]','$_POST[nombre]','$_POST[direccion]','$_POST[telefono]','externa')";

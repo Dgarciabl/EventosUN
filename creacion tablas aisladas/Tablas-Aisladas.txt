@@ -1,7 +1,7 @@
 USE trabajobd;
 ##empresa
 CREATE TABLE empresa(
-      nit         INT(10) PRIMARY KEY ,
+      nit         INT(10) PRIMARY KEY,
       nombre      VARCHAR(100) NOT NULL,
       direccion   VARCHAR(100) NOT NULL,
       telefono    VARCHAR(100) NOT NULL,
@@ -24,14 +24,13 @@ ALTER TABLE contratada ADD CONSTRAINT CKED CHECK(especialidad="decoracion");
 ALTER TABLE contratada ADD CONSTRAINT CKEE CHECK(especialidad="entretenimiento");
 ##evento
 CREATE TABLE evento(
-      nit                 INT(10) REFERENCES empresa(nit),
+      nit                 INT(10) REFERENCES empresa(nit) on DELETE CASCADE,
       cod_evento          INT(10) PRIMARY KEY AUTO_INCREMENT,
       razon               VARCHAR(100) NOT NULL,
       fecha               DATE NOT NULL,
       presupuesto         VARCHAR(100) NOT NULL,
       nombre              VARCHAR(100)
 )ENGINE=INNODB;
-ALTER TABLE evento ADD CONSTRAINT Fk_CK CHECK((nit_externa IS NULL AND nit_contratada IS NOT NULL) OR (nit_contratada IS NULL AND nit_externa IS NOT NULL));
 ALTER TABLE evento ADD CONSTRAINT CKRC CHECK(razon="conferencia");
 ALTER TABLE evento ADD CONSTRAINT CKRA CHECK(razon="aniversario");
 ALTER TABLE evento ADD CONSTRAINT CKRR CHECK(razon="reunion");
