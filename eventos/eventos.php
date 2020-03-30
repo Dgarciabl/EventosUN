@@ -60,8 +60,8 @@
                                 <input type="number" name="presupuesto" id="presupuesto" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for= "nombre">Nombre </label>
-                                <input type="text" name="nombre" id="nombre" class="form-control" required>
+                                <label for= "nombre_evento">Nombre </label>
+                                <input type="text" name="nombre_evento" id="nombre_evento" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="ubicacion">Ubicación</label>
@@ -126,7 +126,7 @@
 
                             <td><?=$fila['presupuesto'];?></td>
 
-                            <td><?=$fila['nombre'];?></td>
+                            <td><?=$fila['nombre_evento'];?></td>
                             
                             <td><?=$fila['ubicacion'];?></td>
 
@@ -149,7 +149,7 @@
                                     <input type="text" name="razon" value='<?=$fila['razon'];?>' hidden>
                                     <input type="text" name="fecha" value='<?=$fila['fecha'];?>' hidden>
                                     <input type="text" name="presupuesto" value=<?=$fila['presupuesto'];?> hidden>
-                                    <input type="text" name="nombre" value='<?=$fila['nombre'];?>' hidden>
+                                    <input type="text" name="nombre_evento" value='<?=$fila['nombre_evento'];?>' hidden>
                                 </form>
                             </td>
                         </tr>
